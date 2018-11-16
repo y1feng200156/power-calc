@@ -22,7 +22,7 @@
           <br>please join our online
           <a href="https://community.vuetifyjs.com" target="_blank">Discord Community</a>
         </p>
-        <v-date-picker locale="zh-Hans"></v-date-picker>
+        <v-date-picker :locale="$vuetify.lang.current" v-model="date"/>
       </v-flex>
 
       <v-flex
@@ -143,6 +143,7 @@ export default {
         href: 'https://vuetifyjs.com/getting-started/frequently-asked-questions',
       },
     ],
+    date: new Date().toISOString().substr(0, 10),
   }),
 };
 </script>
