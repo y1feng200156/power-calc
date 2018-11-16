@@ -1,12 +1,14 @@
 import Vue from 'vue';
 import Vuetify from 'vuetify';
-import zhHans from 'vuetify/src/locale/zh-Hans';
+import zhCN from '../i18n/zh-CN';
+import en from 'vuetify/src/locale/en';
+import pl from 'vuetify/src/locale/pl';
 import 'vuetify/src/stylus/app.styl';
 
 Vue.use(Vuetify, {
   iconfont: 'md',
-  locale: {
-    locales: { 'zh-hans': zhHans },
-    current: 'zh-Hans',
+  lang: {
+    locales: { en, pl, 'zh-CN': zhCN },
+    current: 'zh-CN',
   },
 });
