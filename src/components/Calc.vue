@@ -101,9 +101,12 @@
 
 <script lang='ts'>
 import { Component, Vue } from 'vue-property-decorator';
+import numeral from 'numeral';
 import { monthTotal, yearTotal, powerPrice } from './CalcMixis';
 
-@Component
+@Component({
+  components: {},
+})
 export default class Calc extends Vue {
   public valid: boolean = false;
   public form: any = {
@@ -118,7 +121,7 @@ export default class Calc extends Vue {
   }
 
   get monthPrice(): number {
-    return powerPrice(this.monthTotal, this.form.prices.powers, this.form.prices.values);
+    return numeral(powerPrice(this.monthTotal, this.form.prices.powers, this.form.prices.values)).format('￥0,0[.]00');
   }
 
   get yearTotal(): number {
@@ -126,7 +129,7 @@ export default class Calc extends Vue {
   }
 
   get yearPrice(): number {
-    return powerPrice(this.yearTotal, this.form.prices.powers, this.form.prices.values);
+    return numeral(powerPrice(this.yearTotal, this.form.prices.powers, this.form.prices.values)).format('￥0,0[.]00');
   }
 
   public created() {
