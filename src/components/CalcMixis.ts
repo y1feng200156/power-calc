@@ -35,5 +35,5 @@ export const monthTotal = (power = 1, hours = 1) => {
 export const yearTotal = (power = 1, hours = 1) => (power / powerInHours) * hours * yearDays();
 
 export const powerPrice = (totalPower: number, powers: number[], prices: number[]): number => {
-  return Math.ceil(__powerPrice(totalPower, diffs(powers), prices) * 100) / 100;
+  return Math.ceil(calcPower(totalPower, diffs(powers), prices) * 100) / 100;
 };
