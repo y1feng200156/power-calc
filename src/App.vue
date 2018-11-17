@@ -1,29 +1,14 @@
 <template>
-  <v-app>
-    <v-toolbar app>
+  <v-app light>
+    <v-toolbar app class='white'>
       <v-toolbar-title class="headline text-uppercase">
+        <img :src="require('@/assets/windpower.svg')" height="20">
         <span class="font-weight-light">{{ $vuetify.t('$vuetify.title') }}</span>
       </v-toolbar-title>
     </v-toolbar>
 
     <v-content>
-      <Calc/>
+      <router-view />
     </v-content>
   </v-app>
 </template>
-
-<script>
-import Calc from './components/Calc';
-
-export default {
-  name: 'App',
-  components: {
-    Calc,
-  },
-  data() {
-    return {
-      //
-    };
-  },
-};
-</script>

@@ -1,97 +1,135 @@
 <template>
-  <v-container>
-    <v-layout
-      text-xs-center
-      wrap
-    >
-      <v-flex mt-5 mb-4 xs12 sm8 offset-sm2>
-        <v-form v-model="valid">
-          <v-select
-            :items='prices'
-            item-text="title"
-            item-value="values"
-            :label="$vuetify.t('$vuetify.prices')"
-            :hint="$vuetify.t('$vuetify.hits.prices')"
-            persistent-hint
-            return-object
-            box
-            v-model="form.prices"/>
-          <v-text-field
-            v-model="form.power"
-            :label="$vuetify.t('$vuetify.power')"
-            :hint="$vuetify.t('$vuetify.hits.power')"
-            persistent-hint
-            type='number'
-            box
-            required
-            suffix='千瓦·时'
-          ></v-text-field>
-          <v-text-field
-            v-model="form.hours"
-            :label="$vuetify.t('$vuetify.hours')"
-            :hint="$vuetify.t('$vuetify.hits.hours')"
-            persistent-hint
-            type='number'
-            box
-            required
-            suffix='时'
-          ></v-text-field>
-        </v-form>
-        <v-card>
-          <v-card-title><h4>{{ $vuetify.t('$vuetify.total') }}</h4></v-card-title>
-          <v-divider />
-          <v-list dense>
-            <v-list-tile>
-              <v-list-tile-content>{{ $vuetify.t('$vuetify.monthTotal') }}{{ $vuetify.t('$vuetify.punctuation.colon')}}</v-list-tile-content>
-              <v-list-tile-content class="align-end">{{ monthTotal }}</v-list-tile-content>
-            </v-list-tile>
-            <v-list-tile>
-              <v-list-tile-content>{{ $vuetify.t('$vuetify.monthTotalPrice') }}{{ $vuetify.t('$vuetify.punctuation.colon')}}</v-list-tile-content>
-              <v-list-tile-content class="align-end">￥{{ monthPrice }}</v-list-tile-content>
-            </v-list-tile>
-            <v-list-tile>
-              <v-list-tile-content>{{ $vuetify.t('$vuetify.yearTotal') }}{{ $vuetify.t('$vuetify.punctuation.colon')}}</v-list-tile-content>
-              <v-list-tile-content class="align-end">{{ yearTotal }}</v-list-tile-content>
-            </v-list-tile>
-            <v-list-tile>
-              <v-list-tile-content>{{ $vuetify.t('$vuetify.yearTotalPrice') }}{{ $vuetify.t('$vuetify.punctuation.colon')}}</v-list-tile-content>
-              <v-list-tile-content class="align-end">￥{{ yearPrice }}</v-list-tile-content>
-            </v-list-tile>
-          </v-list>
-        </v-card>
-      </v-flex>
-    </v-layout>
-  </v-container>
+  <div>
+    <section>
+      <v-parallax :src="require('@/assets/hero.jpg')" height="500">
+        <v-layout
+          column
+          align-center
+          justify-center
+        >
+          <img :src="require('@/assets/calc.svg')" />
+          <h1 class="white--text mb-2 display-1 text-xs-center">电费计算器</h1>
+          <div class="subheading mb-3 text-xs-center">Photo by Manuel Will on Unsplash</div>
+        </v-layout>
+      </v-parallax>
+    </section>
+    <v-container>
+      <v-layout
+        text-xs-center
+        wrap
+      >
+        <v-flex mt-2 mb-2 xs12 sm8 offset-sm2>
+          <v-form v-model="valid">
+            <v-select
+              :items='prices'
+              item-text="title"
+              item-value="values"
+              :label="$vuetify.t('$vuetify.prices')"
+              :hint="$vuetify.t('$vuetify.hits.prices')"
+              persistent-hint
+              return-object
+              box
+              v-model="form.prices"/>
+            <v-text-field
+              v-model="form.power"
+              :label="$vuetify.t('$vuetify.power')"
+              :hint="$vuetify.t('$vuetify.hits.power')"
+              persistent-hint
+              type='number'
+              box
+              required
+              suffix='千瓦·时'
+            ></v-text-field>
+            <v-text-field
+              v-model="form.hours"
+              :label="$vuetify.t('$vuetify.hours')"
+              :hint="$vuetify.t('$vuetify.hits.hours')"
+              persistent-hint
+              type='number'
+              box
+              required
+              suffix='时'
+            ></v-text-field>
+          </v-form>
+        </v-flex>
+      </v-layout>
+    </v-container>
+    <section>
+      <v-parallax :src="require('@/assets/hero.jpg')" height="400">
+        <v-container>
+          <v-layout
+            text-xs-center
+            wrap
+          >
+            <v-flex mt-2 mb-4 xs12 sm8 offset-sm2>
+              <v-card class="elevation-8">
+                <v-card-title><h4>{{ $vuetify.t('$vuetify.total') }}</h4></v-card-title>
+                <v-divider />
+                <v-list dense>
+                  <v-list-tile>
+                    <v-list-tile-content>{{ $vuetify.t('$vuetify.monthTotal') }}{{ $vuetify.t('$vuetify.punctuation.colon')}}</v-list-tile-content>
+                    <v-list-tile-content class="align-end">{{ monthTotal }}</v-list-tile-content>
+                  </v-list-tile>
+                  <v-list-tile>
+                    <v-list-tile-content>{{ $vuetify.t('$vuetify.monthTotalPrice') }}{{ $vuetify.t('$vuetify.punctuation.colon')}}</v-list-tile-content>
+                    <v-list-tile-content class="align-end">￥{{ monthPrice }}</v-list-tile-content>
+                  </v-list-tile>
+                  <v-list-tile>
+                    <v-list-tile-content>{{ $vuetify.t('$vuetify.yearTotal') }}{{ $vuetify.t('$vuetify.punctuation.colon')}}</v-list-tile-content>
+                    <v-list-tile-content class="align-end">{{ yearTotal }}</v-list-tile-content>
+                  </v-list-tile>
+                  <v-list-tile>
+                    <v-list-tile-content>{{ $vuetify.t('$vuetify.yearTotalPrice') }}{{ $vuetify.t('$vuetify.punctuation.colon')}}</v-list-tile-content>
+                    <v-list-tile-content class="align-end">￥{{ yearPrice }}</v-list-tile-content>
+                  </v-list-tile>
+                </v-list>
+              </v-card>
+            </v-flex>
+          </v-layout>
+          <v-layout
+            column
+            align-center
+            justify-center
+          >
+            <div class="subheading mb-5 text-xs-center"><code>以上的计算结果只是估算，与实际使用中有出入。</code></div>
+          </v-layout>
+        </v-container>
+      </v-parallax>
+    </section>
+  </div>
 </template>
 
-<script>
+<script lang='ts'>
+import { Component, Vue } from 'vue-property-decorator';
 import { monthTotal, yearTotal, powerPrice } from './CalcMixis';
-export default {
-  data: () => ({
-    date: new Date().toISOString().substr(0, 10),
-    valid: false,
-    form: {
-      prices: {},
-      power: 1,
-      hours: 1,
-    },
-    prices: [],
-  }),
-  computed: {
-    monthTotal() {
-      return monthTotal(this.form.power, this.form.hours);
-    },
-    monthPrice() {
-      return powerPrice(this.monthTotal, this.form.prices.powers, this.form.prices.values);
-    },
-    yearTotal() {
-      return yearTotal(this.form.power, this.form.hours);
-    },
-    yearPrice() {
-      return powerPrice(this.yearTotal, this.form.prices.powers, this.form.prices.values);
-    },
-  },
-  created() {
+
+@Component
+export default class Calc extends Vue {
+  public valid: boolean = false;
+  public form: any = {
+    prices: {},
+    power: 1,
+    hours: 1,
+  };
+  public prices: any[] = [];
+
+  get monthTotal(): number {
+    return monthTotal(this.form.power, this.form.hours);
+  }
+
+  get monthPrice(): number {
+    return powerPrice(this.monthTotal, this.form.prices.powers, this.form.prices.values);
+  }
+
+  get yearTotal(): number {
+    return yearTotal(this.form.power, this.form.hours);
+  }
+
+  get yearPrice(): number {
+    return powerPrice(this.yearTotal, this.form.prices.powers, this.form.prices.values);
+  }
+
+  public created() {
     const prices = [
       {
         title: '长沙',
@@ -101,8 +139,8 @@ export default {
     ];
     this.prices = prices;
     this.form.prices = prices[0];
-  },
-};
+  }
+}
 </script>
 <style>
 </style>

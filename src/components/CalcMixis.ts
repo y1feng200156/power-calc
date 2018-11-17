@@ -29,10 +29,10 @@ const calcPower = (totalPower: number, powerDiffs: number[], prices: number[]): 
 const yearDays = () => (new Date().getFullYear() % 4 === 0 ? 366 : 365);
 
 export const monthTotal = (power = 1, hours = 1) => {
-  return (power / powerInHours) * hours * 30;
+  return Math.ceil((power / powerInHours) * hours * 30 * 100) / 100;
 };
 
-export const yearTotal = (power = 1, hours = 1) => (power / powerInHours) * hours * yearDays();
+export const yearTotal = (power = 1, hours = 1) => Math.ceil((power / powerInHours) * hours * yearDays() * 100) / 100;
 
 export const powerPrice = (totalPower: number, powers: number[], prices: number[]): number => {
   return Math.ceil(calcPower(totalPower, diffs(powers), prices) * 100) / 100;

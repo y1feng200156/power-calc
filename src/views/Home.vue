@@ -1,8 +1,5 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <Calc msg="Welcome to Your Vue.js + TypeScript App"/>
-  </div>
+    <Calc/>
 </template>
 
 <script lang="ts">
