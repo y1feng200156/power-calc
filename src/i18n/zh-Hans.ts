@@ -16,4 +16,17 @@ export default {
     hours: '请输入电器一天运行多少个小时',
     prices: '请选择所在地区',
   },
+  rules: {
+    common: {
+      min: '不能小于{0}',
+      max: '不能大于{0}',
+      number: '必须为数字',
+    },
+    power: {
+      blank: '请输入功率',
+    },
+    hours: {
+      blank: '请输入时长',
+    },
+  },
 };
