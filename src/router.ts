@@ -10,6 +10,9 @@ export default new Router({
       path: '/',
       name: 'home',
       component: Home,
+      meta: {
+        title: '电费计算器',
+      },
     },
     {
       path: '/about',
