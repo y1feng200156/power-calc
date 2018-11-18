@@ -77,19 +77,19 @@
                 <v-list dense>
                   <v-list-tile>
                     <v-list-tile-content>{{ $vuetify.t('$vuetify.monthTotal') }}{{ $vuetify.t('$vuetify.punctuation.colon')}}</v-list-tile-content>
-                    <v-list-tile-content class="align-end">{{ monthTotal }}</v-list-tile-content>
+                    <v-list-tile-content class="align-end" style="align-items: flex-end;">{{ monthTotal }}</v-list-tile-content>
                   </v-list-tile>
                   <v-list-tile>
                     <v-list-tile-content>{{ $vuetify.t('$vuetify.monthTotalPrice') }}{{ $vuetify.t('$vuetify.punctuation.colon')}}</v-list-tile-content>
-                    <v-list-tile-content class="align-end">￥{{ monthPrice }}</v-list-tile-content>
+                    <v-list-tile-content class="align-end" style="align-items: flex-end;">￥{{ monthPrice }}</v-list-tile-content>
                   </v-list-tile>
                   <v-list-tile>
                     <v-list-tile-content>{{ $vuetify.t('$vuetify.yearTotal') }}{{ $vuetify.t('$vuetify.punctuation.colon')}}</v-list-tile-content>
-                    <v-list-tile-content class="align-end">{{ yearTotal }}</v-list-tile-content>
+                    <v-list-tile-content class="align-end" style="align-items: flex-end;">{{ yearTotal }}</v-list-tile-content>
                   </v-list-tile>
                   <v-list-tile>
                     <v-list-tile-content>{{ $vuetify.t('$vuetify.yearTotalPrice') }}{{ $vuetify.t('$vuetify.punctuation.colon')}}</v-list-tile-content>
-                    <v-list-tile-content class="align-end">￥{{ yearPrice }}</v-list-tile-content>
+                    <v-list-tile-content class="align-end" style="align-items: flex-end;">￥{{ yearPrice }}</v-list-tile-content>
                   </v-list-tile>
                 </v-list>
               </v-card>
@@ -125,7 +125,7 @@
                     <v-list-tile-content :key="`${index}-${pIndex}-content`">
                       {{$vuetify.t('$vuetify.ladder', pIndex + 1)}}
                     </v-list-tile-content>
-                    <v-list-tile-content :key="`${index}-${pIndex}-sub-content`" class="align-end">
+                    <v-list-tile-content :key="`${index}-${pIndex}-sub-content`" class="align-end" style="align-items: flex-end;">
                       <span class='text--primary'>{{ $vuetify.t('$vuetify.humanPrice', price) }}/{{ $vuetify.t('$vuetify.powerUnit') }}</span>
                       <span class='text--secondary'>
                         <template v-if="pIndex === 0">{{ $vuetify.t('$vuetify.ladderPower.first', item.powers[pIndex]) }}</template>
