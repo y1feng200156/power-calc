@@ -10,6 +10,7 @@
           <img :src="require('@/assets/calc.svg')" />
           <h1 class="white--text mb-2 display-1 text-xs-center">{{ $vuetify.t('$vuetify.title') }}</h1>
           <div class="subheading mb-3 text-xs-center">Photo by Manuel Will on Unsplash</div>
+          <div class="subheading mb-3 text-xs-center">{{ $vuetify.t('$vuetify.desc') }}</div>
         </v-layout>
       </v-parallax>
     </section>
@@ -42,7 +43,7 @@
               prepend-inner-icon='power'
               required
               box
-              suffix='千瓦·时'
+              :suffix="$vuetify.t('$vuetify.powerUnit')"
             ></v-text-field>
             <v-text-field
               v-model="form.hours"
@@ -56,14 +57,14 @@
               prepend-inner-icon='access_alarms'
               box
               required
-              suffix='时'
+              :suffix="$vuetify.t('$vuetify.hoursUnit')"
             ></v-text-field>
           </v-form>
         </v-flex>
       </v-layout>
     </v-container>
     <section>
-      <v-parallax :src="require('@/assets/hero.jpg')" height="400">
+      <v-parallax :src="require('@/assets/hero.jpg')" height="324">
         <v-container>
           <v-layout
             text-xs-center
@@ -99,10 +100,49 @@
             align-center
             justify-center
           >
-            <div class="subheading mb-5 text-xs-center"><code>以上的计算结果只是估算，与实际使用中有出入。</code></div>
+            <div class="subheading text-xs-center"><code>以上的计算结果只是估算，与实际使用中有出入。</code></div>
           </v-layout>
         </v-container>
       </v-parallax>
+    </section>
+    <section>
+      <v-container>
+        <v-layout
+          text-xs-center
+          wrap
+        >
+        <v-flex mt-2 mb-2 xs12 sm8 offset-sm2>
+          <v-card class="elevation-2">
+            <v-card-title class="elevation-2"><h4>{{ $vuetify.t('$vuetify.powerLadderDesc') }}</h4></v-card-title>
+            <v-divider />
+            <v-list dense>
+              <template v-for="(item, index) in prices">
+                <v-subheader :key="index">
+                  {{ item.title }}
+                </v-subheader>
+                <template v-for="(price, pIndex) in item.values">
+                  <v-list-tile avatar :key="`${index}-${pIndex}`">
+                    <v-list-tile-content :key="`${index}-${pIndex}-content`">
+                      {{$vuetify.t('$vuetify.ladder', pIndex + 1)}}
+                    </v-list-tile-content>
+                    <v-list-tile-content :key="`${index}-${pIndex}-sub-content`" class="align-end">
+                      <span class='text--primary'>{{ $vuetify.t('$vuetify.humanPrice', price) }}/{{ $vuetify.t('$vuetify.powerUnit') }}</span>
+                      <span class='text--secondary'>
+                        <template v-if="pIndex === 0">{{ $vuetify.t('$vuetify.ladderPower.first', item.powers[pIndex]) }}</template>
+                        <template v-if="pIndex > 0 && pIndex + 1 < item.values.length">{{ $vuetify.t('$vuetify.ladderPower.center', item.powers[pIndex - 1], item.powers[pIndex]) }}</template>
+                        <template v-if="pIndex + 1 === item.values.length">{{ $vuetify.t('$vuetify.ladderPower.end', item.powers[pIndex - 1]) }}</template>
+                      </span>
+                    </v-list-tile-content>
+                  </v-list-tile>
+                  <v-divider v-if="pIndex + 1 < item.values.length" :key="`${index}-${pIndex}-divider`" inset />
+                </template>
+                <v-divider v-if="index + 1 < prices.length" :key="`${index}-divider`" />
+              </template>
+            </v-list>
+          </v-card>
+        </v-flex>
+        </v-layout>
+      </v-container>
     </section>
   </div>
 </template>
@@ -202,7 +242,7 @@ export default class Calc extends Vue {
       {
         title: '贵州',
         values: [0.4556, 0.5056, 0.7556],
-        powers: [3000, 4700],
+        powers: [170, 310],
       },
     ];
     this.prices = prices;

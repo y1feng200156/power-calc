@@ -1,7 +1,9 @@
 export default {
   title: 'Power Calc',
   power: 'Power',
+  powerUnit: 'KW·h',
   hours: 'Hours',
+  hoursUni: 'h',
   prices: 'Price',
   total: 'Total',
   monthTotal: 'Monthly rate',
