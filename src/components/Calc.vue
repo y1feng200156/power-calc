@@ -27,6 +27,7 @@
               :label="$vuetify.t('$vuetify.prices')"
               :hint="$vuetify.t('$vuetify.hits.prices')"
               persistent-hint
+              prepend-inner-icon='location_on'
               return-object
               box
               v-model="form.prices"/>
@@ -38,6 +39,7 @@
               persistent-hint
               type='number'
               :rules="powerRules"
+              prepend-inner-icon='power'
               required
               box
               suffix='千瓦·时'
@@ -51,6 +53,7 @@
               :rules="hoursRules"
               persistent-hint
               type='number'
+              prepend-inner-icon='access_alarms'
               box
               required
               suffix='时'
@@ -192,9 +195,14 @@ export default class Calc extends Vue {
   public created() {
     const prices = [
       {
-        title: '长沙',
+        title: '湖南',
         values: [0.588, 0.638, 0.888],
         powers: [180, 350],
+      },
+      {
+        title: '贵州',
+        values: [0.4556, 0.5056, 0.7556],
+        powers: [3000, 4700],
       },
     ];
     this.prices = prices;

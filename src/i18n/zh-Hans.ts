@@ -2,7 +2,7 @@ export default {
   title: '电费计算器',
   power: '功率',
   hours: '运行时长',
-  prices: '价格规则',
+  prices: '所在地区',
   total: '结果',
   monthTotal: '每月度数',
   monthTotalPrice: '每月电费',
