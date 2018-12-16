@@ -174,7 +174,7 @@ import { VForm } from 'vuetify/lib';
   components: {},
 })
 export default class Calc extends Vue {
-  $refs!: {
+  public $refs!: {
     form: any;
   };
   private valid: boolean = true;
@@ -205,7 +205,7 @@ export default class Calc extends Vue {
     },
   ];
 
-  public hoursRules: any = [
+  private hoursRules: any = [
     (v: any) => {
       if (!!!v) {
         return this.$vuetify.t('$vuetify.rules.hours.blank');

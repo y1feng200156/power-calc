@@ -27,7 +27,6 @@
     "@vue/cli-plugin-babel": "^3.1.1",
     "@vue/cli-plugin-typescript": "^3.1.1",
     "@vue/cli-service": "^3.1.4",
-    "lint-staged": "^7.2.2",
     "node-sass": "^4.9.0",
     "sass-loader": "^7.0.1",
     "stylus": "^0.54.5",
@@ -36,9 +35,6 @@
     "vue-cli-plugin-vuetify": "^0.4.6",
     "vue-template-compiler": "^2.5.17",
     "vuetify-loader": "^1.0.5"
-  },
-  "gitHooks": {
-    "pre-commit": "lint-staged"
   },
   "lint-staged": {
     "*.ts": [
